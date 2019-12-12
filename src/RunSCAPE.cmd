@@ -1,6 +1,6 @@
 @echo off
 
-for %%F in (%1) do set filename=%%~nxF
+set filename=powershell.exe
 
 SET fileCount=0
 
@@ -8,8 +8,8 @@ for /f "tokens=1,*" %%a in ('tasklist ^| find /I /C "%filename%"') do set fileCo
 
 for /f "tokens=1,* delims= " %%a in ("%*") do set ALL_BUT_FIRST=%%b
 
-IF %fileCount% gtr 5 (
-	%1 %ALL_BUT_FIRST%
+IF %fileCount% gtr 1 (
+	powershell.exe -NoProfile -ExecutionPolicy Bypass -File %0\..\SCAPE.ps1 %*
 ) ELSE (
-	start "" %1 %ALL_BUT_FIRST%
+	start "" powershell.exe -NoProfile -ExecutionPolicy Bypass -File %0\..\SCAPE.ps1 %*
 )
