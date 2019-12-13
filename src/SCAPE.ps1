@@ -21,6 +21,4 @@ if(
     exit
 }
 
-
-$Collections = INvoke-SCAPESQLQuery -QUery 'Select * from v_Collections'
-write-verbose "finsihed"
+$Collections = Invoke-SCAPESQLQuery -QUery 'Select * from v_Collections'
