@@ -23,3 +23,4 @@ if(
 
 
 $Collections = INvoke-SCAPESQLQuery -QUery 'Select * from v_Collections'
+write-verbose "finsihed"
