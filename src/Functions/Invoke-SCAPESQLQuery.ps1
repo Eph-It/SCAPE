@@ -1,10 +1,18 @@
 Function Invoke-SCAPESQLQuery {
     Param(
-        [string]$Query
+        [string]$Query,
+        [hashtable]$QueryParams = @{}
     )
     $SQLConnectionString = "Server=$($Script:SCAPESettings.SQLServer);Database=$($Script:SCAPESettings.DatabaseName);Integrated Security=True"
     $SQLConnection = New-Object System.Data.SqlClient.SQLConnection($SQLConnectionString)
     $SqlCommand = new-object system.data.sqlclient.sqlcommand($Query,$SQLConnection)
+
+    if($QueryParams) {
+        foreach($key in $QueryParams.Keys){
+            [void]$SqlCommand.Parameters.AddWithValue("$Key", $QueryParams."$key")
+        }
+    }
+
     $SQLConnection.Open()
     
     $adapter = New-Object System.Data.sqlclient.sqlDataAdapter $SqlCommand

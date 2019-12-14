@@ -21,4 +21,13 @@ if(
     exit
 }
 
-$Collections = Invoke-SCAPESQLQuery -QUery 'Select * from v_Collections'
+$Deployments = Get-SCAPEDeployment -MessageID $MessageId -InsString2 $InsStr2 -InsString3 $InsStr3 -InsString4 $InsStr4
+
+foreach($deployment in $Deployments){
+    if($null -ne $deployment.OfferId) {
+
+    }
+    elseif ($null -ne $deployment.AssignmentID) {
+        Set-SCAPEAssignment -Assignment $deployment
+    }
+}
