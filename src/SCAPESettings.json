@@ -6,5 +6,7 @@
     "ExcludedUsers": [
         "DOMAIN\\UserName",
         "DOMAIN\\UserName2"
-    ]
+    ],
+    "StartWebHook": "FULLWebhookURL",
+    "ReadOnly": true
 }
