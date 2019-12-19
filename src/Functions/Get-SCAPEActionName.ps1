@@ -12,7 +12,7 @@ Function Get-SCAPEActionName {
         30016 { return "Modified" }
         30152 { return "Modified" }
         30001 { return "Modified" }
-        30068 { return "Modified" }
+        30068 { return "Content Modified" }
         30004 { return "Modified" }
     }
 }
